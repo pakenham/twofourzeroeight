@@ -37,6 +37,19 @@ namespace twozerofoureight
             NotifyAll();
         }
 
+        public int GetScore()
+        {
+            int output = 0;
+            for(int i=0;i<boardSize; i++)
+            {
+                for (int j=0;j<boardSize; j++)
+                {
+                    output += board[i, j];
+                }
+            }
+            return output;
+        }
+
         private int[,] Random(int[,] input)
         {
             while (true)
