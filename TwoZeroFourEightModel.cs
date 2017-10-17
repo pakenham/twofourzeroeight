@@ -50,6 +50,35 @@ namespace twozerofoureight
             return output;
         }
 
+        public bool GameOver()
+        {
+            int temp = 0;
+            for(int i=0;i<4; i++)
+            {
+                for (int j=0;j<4; j++)
+                {
+                    if(board[i, j] != 0){temp++;}
+                }
+            }
+            if(temp < 16){return false;}
+            else 
+            {
+                for(int i=1;i<3; i++)
+                {
+                    for (int j=1;j<3; j++)
+                    {
+                        if(board[i,j] != board[i-1,j] && board[i,j] != board[i+1,j] && board[i,j] != board[i,j-1] && board[i,j] != board[i,j+1]&& // middle
+                           board[0,0] != board[0,1] && board[0,1] != board[0,2] && board[0,2] != board[0,3]     // left
+                           && board[0,3] != board[1,3] && board[1,3] != board[2,3] && board[2,3] != board[3,3]  // bottom
+                           && board[3,3] != board[3,2] && board[3,2] != board[3,1] && board[3,1] != board[3,0]  // right
+                           && board[3,0] != board[2,0] && board[2,0] != board[1,0] && board[1,0] != board[0,0]) // top
+                        { return true ;}
+                    }
+                } 
+                return false;
+            }
+        }
+
         private int[,] Random(int[,] input)
         {
             while (true)
